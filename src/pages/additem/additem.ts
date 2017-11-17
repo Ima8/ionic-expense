@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
 import { ExpenseProvider } from '../../providers/expense/expense'
 /**
  * Generated class for the AdditemPage page.
@@ -15,7 +17,9 @@ import { ExpenseProvider } from '../../providers/expense/expense'
 })
 export class AdditemPage {
   data = { date:"", type:"", description:"", amount:0 };
-  constructor(public navCtrl: NavController, public navParams: NavParams,public expenseProvider:ExpenseProvider) {
+  itemRef: AngularFireList<any>;
+  constructor(public navCtrl: NavController, public navParams: NavParams,public expenseProvider:ExpenseProvider,public db: AngularFireDatabase) {
+    this.itemRef =  db.list('expenses');
   }
 
   ionViewDidLoad() {
@@ -23,7 +27,13 @@ export class AdditemPage {
   }
 
   saveData(){
-    this.expenseProvider.addExpense(this.data.date,1,this.data.description,this.data.amount)
+    //this.expenseProvider.addExpense(this.data.date,1,this.data.description,this.data.amount)
+    this.itemRef.push({
+      trandate:this.data.date,
+      category:1,
+      description:this.data.description,
+      amount:this.data.amount
+    })
     this.navCtrl.pop()
   }
 }
