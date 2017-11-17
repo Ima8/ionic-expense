@@ -39,7 +39,8 @@ import { HttpModule } from '@angular/http';
     SQLite,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ExpenseProvider,
-    AngularFireModule
+    AngularFireModule,
+    AngularFireDatabaseModule
   ]
 })
 export class AppModule {}
