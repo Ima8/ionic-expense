@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 import { ExpenseProvider } from '../../providers/expense/expense'
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
+import { EditPage } from '../edit/edit'
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
@@ -38,6 +39,13 @@ export class HomePage {
     // //   this.expenses.push({trandate: expense.rows.item(i).trandate, description: expense.rows.item(i).description, amount: expense.rows.item(i).amount })
     // // }
     // console.log(this.expenses);
+  }
+  editItem(expense) {
+    this.navCtrl.push(EditPage,{
+      data:{
+        expense
+      }
+    })
   }
   deleteItem(key: string) {
     console.log(key);

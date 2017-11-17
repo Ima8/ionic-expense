@@ -13,12 +13,13 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { environment  } from '../environments/environment';
 import { SQLite } from '@ionic-native/sqlite';
 import { HttpModule } from '@angular/http';
-
+import { EditPage } from '../pages/edit/edit'
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
-    AdditemPage
+    AdditemPage,
+    EditPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,8 @@ import { HttpModule } from '@angular/http';
   entryComponents: [
     MyApp,
     HomePage,
-    AdditemPage
+    AdditemPage,
+    EditPage,
   ],
   providers: [
     StatusBar,

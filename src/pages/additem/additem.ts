@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { AngularFireDatabase, AngularFireObject, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
-import { ExpenseProvider } from '../../providers/expense/expense'
+// import { ExpenseProvider } from '../../providers/expense/expense'
 /**
  * Generated class for the AdditemPage page.
  *
@@ -18,7 +18,7 @@ import { ExpenseProvider } from '../../providers/expense/expense'
 export class AdditemPage {
   data = { date:"", type:"", description:"", amount:0 };
   itemRef: AngularFireList<any>;
-  constructor(public navCtrl: NavController, public navParams: NavParams,public expenseProvider:ExpenseProvider,public db: AngularFireDatabase) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,public db: AngularFireDatabase) {
     this.itemRef =  db.list('expenses');
   }
 
